@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sprawdź swoje ryzyko choroby serca</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles/form-style.css') }}">
+</head>
+<body>
+<div class="form">
+    <div class="title">Sprawdź swoje ryzyko wystąpienia choroby serca</div>
+    <div class="subtitle"> Serce jest najważniejszym narządem w ciele człowieka. Jego praca jest złożonym procesem, który trwa nieprzerwanie przez całe życie. Niestety, na przestrzeni ostatnich lat odnotowano znaczny wzrost chorób serca. <br/>
+        Zaburzenia te są najczęstszą przyczyną zgonów w Polsce, jak i na świecie. Uzupełnij formularz i sprawdź, czy należysz do grupy ryzyka! </div>
+
+    <div id="wrapper">
+        <div id="div-form">
+            <p class="results-label">Formularz:</p>
+            <form action="/" method="POST">
+                <div class="input-container ic1">
+                    <input type="number" id="BMI" name="BMI" class="input" placeholder=" " step=".01" required/>
+                    <div class="cut"></div>
+                    <label for="BMI" class="placeholder">Twoje BMI</label>
+                    <a href ="https://bmi-online.pl/" target="_blank">kalkulator bmi</a>
+                </div>
+
+                </br>
+
+                <div class="input-container ic2">
+                    <label for="Sex" class="main-label">Twoja płeć:</label> <br/>
+                        <input type="radio" id="Sex_Male" name="Sex" value="Sex_Male" checked>
+                        <label for="Sex_Male" class="radio-label">Mężczyzna</label>
+                        <input type="radio" id="Sex_Female" name="Sex" value="Sex_Female">
+                        <label for="Sex_Female" class="radio-label">Kobieta</label>
+                </div>
+
+                <div class="input-container ic2">
+                    <label for="AgeCategory" class="main-label">Twoja kategoria wiekowa:</label>
+                        <select id="AgeCategory" name="AgeCategory" class="input-select" required>
+                            <option value="AgeCategory_18-24">18-24</option>
+                            <option value="AgeCategory_25-29">25-29</option>
+                            <option value="AgeCategory_30-34">30-34</option>
+                            <option value="AgeCategory_35-39">35-39</option>
+                            <option value="AgeCategory_40-44">40-44</option>
+                            <option value="AgeCategory_45-49">45-49</option>
+                            <option value="AgeCategory_50-54">50-54</option>
+                            <option value="AgeCategory_55-59">55-59</option>
+                            <option value="AgeCategory_60-64">60-64</option>
+                            <option value="AgeCategory_65-69">65-69</option>
+                            <option value="geCategory_70-74">70-74</option>
+                            <option value="AgeCategory_75-79">75-79</option>
+                            <option value="AgeCategory_80 or older">80 bądź więcej</option>
+
+                        </select>
+                </div>
+
+                <div class="input-container ic2">
+                    <label for="Race" class="main-label">Twoja Rasa:</label>
+                        <select id="Race" name="Race" class="input-select" required>
+                            <option value="Race_White">Biała</option>
+                            <option value="Race_American Indian/Alaskan Native">Natywny mieszkaniec Ameryki</option>
+                            <option value="Race_Hispanic">Latynoska</option>
+                            <option value="Race_Black">Czarnoskóry</option>
+                            <option value="Race_Asian">Azjata</option>
+                            <option value="Race_Other">Inna</option>
+                        </select>
+
+                </div>
+
+                <hr>
+
+                <div class="input-container ic2">
+                    <input id="PhysicalHealth" name="PhysicalHealth" class="input" type="number" min="0" max="30" placeholder=" " required/>
+                    <div class="cut"></div>
+                    <label for="PhysicalHealth" class="placeholder">W ciągu ostanich 30 dni, w ilu z nich czułeś się źle fizycznie?</label>
+                </div>
+
+                <div class="input-container ic2">
+                    <input id="MentalHealth" name="MentalHealth" class="input" type="number" min="0" max="30" placeholder=" " required/>
+                    <div class="cut"></div>
+                    <label for="MentalHealth" class="placeholder">W ciągu ostanich 30 dni, w ilu z nich czułeś się źle psychicznie?</label>
+                </div>
+
+                <div class="input-container ic2">
+                    <input id="SleepTime" name="SleepTime" class="input" type="number" min="0" max="24" placeholder=" " required/>
+                    <div class="cut"></div>
+                    <label for="SleepTime" class="placeholder">Ile godzin dziennie średnio śpisz?</label>
+                </div>
+
+                <div class="input-container ic2">
+                    <label for="GenHealth" class="main-label">Jakbyś ocenił swoje zdrowie?</label>
+                        <select id="GenHealth" name="GenHealth" class="input-select" required>
+                            <option value="GenHealth_Excellent">Rewelacyjne</option>
+                            <option value="GenHealth_Very good">Bardzo dobre</option>
+                            <option value="GenHealth_Good">Dobre</option>
+                            <option value="GenHealth_Fair">Zadowalające</option>
+                            <option value="GenHealth_Poor">Słabe</option>
+                        </select>
+                </div>
+
+                <div class="input-container ic2">
+                    <label for="Diabetic" class="main-label">Czy masz cukrzycę?</label>
+                        <select id="Diabetic" name="Diabetic" class="input-select" required>
+                            <option value="Diabetic_No">Nie</option>
+                            <option value="Diabetic_Yes">Tak</option>
+                            <option value="Diabetic_No, borderline diabetes">Mam tylko graniczną postać cukrzycy</option>
+                            <option value="Diabetic_Yes (during pregnancy)">Tylko podczas ciąży</option>
+                        </select>
+
+                </div>
+
+
+                <div class="input-container ic2">
+                    <label for="PhysicalActivity" class="main-label">Czy w ostatnim miesiącu uprawiałeś sport?</label><br/>
+                        <input type="radio" id="PhysicalActivity_Yes" name="PhysicalActivity" value=1.0>
+                        <label for="PhysicalActivity_Yes" class="radio-label">Tak</label>
+                        <input type="radio" id="PhysicalActivity_No" name="PhysicalActivity" value=0.0 checked>
+                        <label for="PhysicalActivity_No" class="radio-label">Nie</label>
+                </div>
+
+                <div class="input-container ic2">
+                    <label for="DiffWalking" class="main-label">Czy masz poważne problemy z poruszaniem się?</label><br/>
+                        <input type="radio" id="DiffWalking_Yes" name="DiffWalking" value=1.0>
+                        <label for="DiffWalking_Yes" class="radio-label">Tak</label>
+                        <input type="radio" id="DiffWalking_No" name="DiffWalking" value=0.0 checked>
+                        <label for="DiffWalking_No" class="radio-label">Nie</label>
+                </div>
+
+
+
+                <div class="input-container ic2">
+                    <label for="Smoking" class="main-label">Czy kiedykolwiek paliłeś papierosy, i jeżeli tak to czy wypaliłeś ponad 5 paczek?</label> <br/>
+                        <input type="radio" id="Smoking_Yes" name="Smoking" value=1.0>
+                        <label for="Smoking_Yes" class="radio-label">Tak</label>
+                        <input type="radio" id="Smoking_No" name="Smoking" value=0.0 checked>
+                        <label for="Smoking_No" class="radio-label">Nie</label>
+                </div>
+
+                <div class="input-container ic2">
+                    <label for="AlcoholDrinking" class="main-label">Czy pijesz dużo alkoholu w ciągu tygodnia?</label><br/>
+                        <input type="radio" id="AlcoholDrinking_Yes" name="AlcoholDrinking" value=1.0>
+                        <label for="AlcoholDrinking_Yes" class="radio-label">Tak</label>
+                        <input type="radio" id="AlcoholDrinking_No" name="AlcoholDrinking" value=0.0 checked>
+                        <label for="AlcoholDrinking_No" class="radio-label">Nie</label>
+                </div>
+
+
+                <div class="input-container ic2">
+                    <label for="Stroke" class="main-label">Czy kiedykolwiek miałeś udar?</label><br/>
+                        <input type="radio" id="Stroke_Yes" name="Stroke" value=1.0>
+                        <label for="Stroke_Yes" class="radio-label">Tak</label>
+                        <input type="radio" id="Stroke_No" name="Stroke" value=0.0 checked>
+                        <label for="Stroke_No" class="radio-label">Nie</label>
+                </div>
+
+                <div class="input-container ic2">
+                    <label for="Asthma" class="main-label">Czy chorujesz na astmę?</label><br/>
+                        <input type="radio" id="Asthma_Yes" name="Asthma" value=1.0>
+                        <label for="Asthma_Yes" class="radio-label">Tak</label>
+                        <input type="radio" id="Asthma_No" name="Asthma" value=0.0 checked>
+                        <label for="Asthma_No" class="radio-label">Nie</label>
+                </div>
+
+                <div class="input-container ic2">
+                    <label for="KidneyDisease" class="main-label">Czy występuje u ciebie choroba nerek?</label><br/>
+                        <input type="radio" id="KidneyDisease_Yes" name="KidneyDisease" value=1.0>
+                        <label for="KidneyDisease_Yes" class="radio-label">Tak</label>
+                        <input type="radio" id="KidneyDisease_No" name="KidneyDisease" value=0.0 checked>
+                        <label for="KidneyDisease_No" class="radio-label">Nie</label>
+                </div>
+
+                <div class="input-container ic2">
+                    <label for="SkinCancer" class="main-label">Czy kiedykolwiek miałeś raka skóry?</label><br/>
+                        <input type="radio" id="SkinCancer_Yes" name="SkinCancer" value=1.0>
+                        <label for="SkinCancer_Yes" class="radio-label">Tak</label>
+                        <input type="radio" id="SkinCancer_No" name="SkinCancer" value=0.0 checked>
+                        <label for="SkinCancer_No" class="radio-label">Nie</label>
+                </div>
+
+                <input type="submit" class="submit" value="Prześlij formularz">
+            </form>
+        </div>
+        <div id="div-results">
+
+            <p class="results-label">Wynik:</p>
+            {% if heart_result == 0 %}
+            <p class="results">Masz małe szanse na bycie chorym</p>
+            {% endif %}
+
+            {% if heart_result == 1 %}
+            <p class="results">Należysz do grupy ryzyka!</p>
+            <p class="results">Umów się na wizytę ze swoim lekarzem</p>
+            {% endif %}
+
+            {% if heart_result == "error" %}
+            <p class="results">Coś poszło nie tak. Spróbuj ponownie</p>
+            {% endif %}
+
+        </div>
+    </div>
+
+</div>
+</body>
+</html>

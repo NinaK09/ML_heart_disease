@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Models results</title>
+    <style>
+        table, th, td {border: 1px solid;}
+        table{width: 100%}
+        .highlight{font-weight: bold}
+    </style>
+</head>
+<body>
+<h1>Wyniki:</h1>
+    <table>
+        <tr>
+            {% for key in results_keys %}
+                <th>{{key}}</th>
+            {% endfor %}
+        </tr>
+
+        {% for val in models%}
+        <tr>
+            <td><p class="highlight">{{ val["model"] }}</p></td>
+            <td><img src ="/static/conf_matrix/{{val['image name']}}"></td>
+            <td><p class="highlight">{{ "{:.2%}".format(val["recall"]) }}</p>
+                {{ val["recall"] }}
+
+            </td>
+            <td><p class="highlight">{{ "{:.2%}".format(val["precision"]) }}</p>
+                {{ val["precision"] }}
+                </td>
+
+            <td><p class="highlight">{{ "{:.2%}".format(val["accuracy"]) }}</p>
+                {{ val["accuracy"] }}
+                </td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>

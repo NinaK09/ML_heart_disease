@@ -1,0 +1,31 @@
+version: "3.8"
+
+networks:
+  net:
+
+services:
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    image: backend-inz
+    container_name: backend_inz
+    networks:
+      - net
+    ports:
+      - "5001:8000"
+    restart: on-failure
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    image: frontend-inz
+    container_name: frontend_inz
+    depends_on:
+      - backend
+    networks:
+      - net
+    ports:
+      - "5000:5000"
+    restart: on-failure
